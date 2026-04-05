@@ -1,4 +1,0 @@
-int main(void){
-    start_dns_server();
-    return 0;
-}

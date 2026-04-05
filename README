@@ -1,0 +1,3 @@
+1. Wrote server.c to bind to a port and listen for queries
+2. Wrote dns_parser.c to parse the domain name from the query and print to command line
+3. Edited server.c to receive the domain and call parse_dns_query to compare to blocklist

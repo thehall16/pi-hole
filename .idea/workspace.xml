@@ -27,14 +27,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9483ef68-1fa1-4086-b2c1-98487aaee6ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pi-hole.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pi-hole.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/blocklist.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/blocklist" beforeDir="false" afterPath="$PROJECT_DIR$/config/blocklist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/blocklist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/blocklist.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/blocklist.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/dns_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/dns_parser.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/server.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/server.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocklist.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocklist.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dns_parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/dns_parser.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.c" afterDir="false" />
@@ -110,11 +109,6 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="pi_hole" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pi_hole" TARGET_NAME="pi_hole" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="pi_hole" RUN_TARGET_NAME="pi_hole">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -136,8 +130,19 @@
       <workItem from="1775186570224" duration="4511000" />
       <workItem from="1775230492486" duration="624000" />
       <workItem from="1775231887094" duration="1900000" />
-      <workItem from="1775233898810" duration="676000" />
+      <workItem from="1775233898810" duration="4552000" />
+      <workItem from="1775268120457" duration="2956000" />
+      <workItem from="1775402818334" duration="10000" />
     </task>
+    <task id="LOCAL-00001" summary="Wrote dns parser to parse query name and added function call to server.c">
+      <option name="closed" value="true" />
+      <created>1775234917135</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1775234917135</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,5 +153,9 @@
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
     <isAutomaticBootstrapAfterUpdate value="false" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Wrote dns parser to parse query name and added function call to server.c" />
+    <option name="LAST_COMMIT_MESSAGE" value="Wrote dns parser to parse query name and added function call to server.c" />
   </component>
 </project>

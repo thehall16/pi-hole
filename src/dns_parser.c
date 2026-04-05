@@ -5,9 +5,8 @@
 #include <stdio.h>
 #include "dns_parser.h"
 
-void parse_dns_query(unsigned char *buffer) {
+void parse_dns_query(unsigned char *buffer, char *domain) {
     int i = 12;
-    char domain[256];
     int pos = 0;
 
     // Read QNAME
@@ -25,11 +24,9 @@ void parse_dns_query(unsigned char *buffer) {
     }
 
     // Remove . at end and replace with null terminator
-    if (pos < 0) {
+    if (pos > 0) {
         domain[pos - 1] = '\0';
     } else {
         domain[0] = '\0';
     }
-    
-    printf("Domain: %s\n", domain);
 }

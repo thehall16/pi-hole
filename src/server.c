@@ -2,6 +2,7 @@
 // Created by thehall16 on 4/2/26.
 //
 #include "dns_parser.h"
+#include "blocklist.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,6 +16,7 @@ void start_dns_server(void) {
     struct sockaddr_in server_addr, client_addr;
     socklen_t addr_len = sizeof(client_addr);
     unsigned char buffer[BUFFER_SIZE];
+    char domain[256];
 
     // Create UDP Socket
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -48,10 +50,23 @@ void start_dns_server(void) {
             continue;
         }
 
+        // Clear domain char before parsing
+        memset(domain, 0, sizeof(domain));
+
+        // Parse domain from query
+        parse_dns_query(buffer, domain);
+
+
+
         printf("\nReceived DNS query (%d bytes)\n", n);
         printf("From IP: %s\n", inet_ntoa(client_addr.sin_addr));
+        printf("Domain: %s\n", domain);
 
-        parse_dns_query(buffer);
+        if (is_blocked(domain)) {
+            printf("Status: BLOCKED\n");
+        } else {
+            printf("Status: ALLOWED\n");
+        }
     }
     close(sockfd);
 
