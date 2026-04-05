@@ -1,13 +1,16 @@
 //
 // Created by thehall16 on 4/2/26.
 //
-#include "dns_parser.h"
-#include "blocklist.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+
+#include "dns_parser.h"
+#include "blocklist.h"
+#include "server.h"
+#include "dns_response.h"
 
 #define PORT 8053
 #define BUFFER_SIZE 512
@@ -16,6 +19,7 @@ void start_dns_server(void) {
     struct sockaddr_in server_addr, client_addr;
     socklen_t addr_len = sizeof(client_addr);
     unsigned char buffer[BUFFER_SIZE];
+    unsigned char response[BUFFER_SIZE];
     char domain[256];
 
     // Create UDP Socket
@@ -64,6 +68,14 @@ void start_dns_server(void) {
 
         if (is_blocked(domain)) {
             printf("Status: BLOCKED\n");
+
+            int response_len = build_nxdomain_response(buffer, response, n);
+
+            if (sendto(sockfd, response, response_len, 0, (struct sockaddr *)&client_addr, addr_len) < 0) {
+                perror("sendto failed\n");
+            } else {
+                printf("Sent NXDOMAIN response\n");
+            }
         } else {
             printf("Status: ALLOWED\n");
         }
