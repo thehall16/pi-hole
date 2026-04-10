@@ -11,6 +11,7 @@
 #include "blocklist.h"
 #include "server.h"
 #include "dns_response.h"
+#include "forwarder.h"
 
 #define PORT 8053
 #define BUFFER_SIZE 512
@@ -21,6 +22,7 @@ void start_dns_server(void) {
     unsigned char buffer[BUFFER_SIZE];
     unsigned char response[BUFFER_SIZE];
     char domain[256];
+    int response_len;
 
     // Create UDP Socket
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -54,8 +56,9 @@ void start_dns_server(void) {
             continue;
         }
 
-        // Clear domain char before parsing
+        // Clear domain and response buffers before parsing
         memset(domain, 0, sizeof(domain));
+        memset(response, 0, sizeof(response));
 
         // Parse domain from query
         parse_dns_query(buffer, domain);
@@ -78,6 +81,19 @@ void start_dns_server(void) {
             }
         } else {
             printf("Status: ALLOWED\n");
+
+            response_len = forward_dns_query(buffer, n, response, BUFFER_SIZE);
+
+            if (response_len < 0) {
+                perror("Failed to get upstream response\n");
+                continue;
+            }
+
+            if (sendto(sockfd, response, response_len, 0, (struct sockaddr *)&client_addr, addr_len) < 0) {
+                perror("Sendto failed (server)\n");
+            } else {
+                printf("Forwarded upstream response\n");
+            }
         }
     }
     close(sockfd);
