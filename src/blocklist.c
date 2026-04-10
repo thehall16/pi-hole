@@ -21,7 +21,32 @@ static void trim_newline(char *str) {
         len--;
     }
 }
+static int domain_matches(const char *domain, const char *blocked) {
+    int domain_len = strlen(domain);
+    int blocked_len = strlen(blocked);
 
+    // If domain is exact match
+    if (strcmp(domain, blocked) == 0) {
+        return 1;
+    }
+
+    // Ensure blocked entry is not longer than query domain
+    if (blocked_len >= domain_len) {
+        return 0;
+    }
+
+    // Check if end of queried domain matched blocklist entry
+    if (strcmp(domain + (domain_len - blocked_len), blocked) != 0) {
+        return 0;
+    }
+
+    // Ensure there is a real subdomain boundary before the suffix
+    if (domain[domain_len - blocked_len - 1] == '.') {
+        return 1;
+    }
+
+    return 0;
+}
 int load_blocklist(const char *filename) {
     FILE *file;
     char line[MAX_DOMAIN_LENGTH];
@@ -66,7 +91,7 @@ int load_blocklist(const char *filename) {
 
 int is_blocked(const char *domain) {
     for (int i = 0; i < blocked_count; i++) {
-        if (strcmp(domain, blocked_domains[i]) == 0) {
+        if (domain_matches(domain, blocked_domains[i])) {
             return 1;
         }
     }

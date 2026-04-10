@@ -26,12 +26,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9483ef68-1fa1-4086-b2c1-98487aaee6ea" name="Changes" comment="Added new dir for python dashboard">
-      <change afterPath="$PROJECT_DIR$/dashboard/static/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dashboard/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/reload_blocklist.sh" afterDir="false" />
+    <list default="true" id="9483ef68-1fa1-4086-b2c1-98487aaee6ea" name="Changes" comment="Added file structure for dashboard as well as a script for adding a domain via dashboard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/blocklist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config/blocklist.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocklist.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocklist.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +85,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "CMake Application.pi_hole.executor": "Run",
+    "CMake Application.pi_hole.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -139,7 +137,7 @@
       <workItem from="1775418020731" duration="8221000" />
       <workItem from="1775483571763" duration="2862000" />
       <workItem from="1775665105944" duration="1727000" />
-      <workItem from="1775830400910" duration="4699000" />
+      <workItem from="1775830400910" duration="6761000" />
     </task>
     <task id="LOCAL-00001" summary="Wrote dns parser to parse query name and added function call to server.c">
       <option name="closed" value="true" />
@@ -189,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775834554539</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added file structure for dashboard as well as a script for adding a domain via dashboard">
+      <option name="closed" value="true" />
+      <created>1775835378109</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1775835378109</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +214,7 @@
     <MESSAGE value="Created forwarder.c and forwarder.h to send non-blocked domains to the host" />
     <MESSAGE value="Added blocked domain forwarding to null ip. Added functionality to switch blocking mode between null ip and NXDOMAIN. Added new dir for python dashboard" />
     <MESSAGE value="Added new dir for python dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new dir for python dashboard" />
+    <MESSAGE value="Added file structure for dashboard as well as a script for adding a domain via dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added file structure for dashboard as well as a script for adding a domain via dashboard" />
   </component>
 </project>
