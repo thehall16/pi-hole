@@ -26,12 +26,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9483ef68-1fa1-4086-b2c1-98487aaee6ea" name="Changes" comment="Added DNS response software to send an NXDOMAIN so client stops attempting to resolve the domain">
-      <change afterPath="$PROJECT_DIR$/include/forwarder.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/forwarder.c" afterDir="false" />
+    <list default="true" id="9483ef68-1fa1-4086-b2c1-98487aaee6ea" name="Changes" comment="Created forwarder.c and forwarder.h to send non-blocked domains to the host">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/blocklist.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config/blocklist.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/dns_response.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/dns_response.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dns_response.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/dns_response.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.c" afterDir="false" />
     </list>
@@ -133,7 +130,7 @@
       <workItem from="1775418020731" duration="8221000" />
       <workItem from="1775483571763" duration="2862000" />
       <workItem from="1775665105944" duration="1727000" />
-      <workItem from="1775830400910" duration="313000" />
+      <workItem from="1775830400910" duration="3666000" />
     </task>
     <task id="LOCAL-00001" summary="Wrote dns parser to parse query name and added function call to server.c">
       <option name="closed" value="true" />
@@ -159,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775418346131</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Created forwarder.c and forwarder.h to send non-blocked domains to the host">
+      <option name="closed" value="true" />
+      <created>1775830820211</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1775830820211</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +180,7 @@
     <MESSAGE value="Wrote dns parser to parse query name and added function call to server.c" />
     <MESSAGE value="DNS parser now takes domain as an argument. Domain is passed to blocklist.c where it is processed and determined if it matches domains in blocklist.txt." />
     <MESSAGE value="Added DNS response software to send an NXDOMAIN so client stops attempting to resolve the domain" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added DNS response software to send an NXDOMAIN so client stops attempting to resolve the domain" />
+    <MESSAGE value="Created forwarder.c and forwarder.h to send non-blocked domains to the host" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created forwarder.c and forwarder.h to send non-blocked domains to the host" />
   </component>
 </project>

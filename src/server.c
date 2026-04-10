@@ -16,13 +16,15 @@
 #define PORT 8053
 #define BUFFER_SIZE 512
 
+#define BLOCK_MODE BLOCK_NULL_IP // <--- Change this to BLOCK_NULL_IP or BLOCK_NXDOMAIN
+
 void start_dns_server(void) {
+    int response_len;
     struct sockaddr_in server_addr, client_addr;
     socklen_t addr_len = sizeof(client_addr);
     unsigned char buffer[BUFFER_SIZE];
     unsigned char response[BUFFER_SIZE];
     char domain[256];
-    int response_len;
 
     // Create UDP Socket
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -49,7 +51,7 @@ void start_dns_server(void) {
 
     // Main loop
     while (1) {
-        int n = recvfrom(sockfd, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&client_addr, &addr_len);
+        const int n = recvfrom(sockfd, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&client_addr, &addr_len);
 
         if (n < 0) {
             perror("recvfrom failed\n");
@@ -72,12 +74,18 @@ void start_dns_server(void) {
         if (is_blocked(domain)) {
             printf("Status: BLOCKED\n");
 
-            int response_len = build_nxdomain_response(buffer, response, n);
+            if (BLOCK_MODE == BLOCK_NXDOMAIN) {
+                response_len = build_nxdomain_response(buffer, response, n);
+                printf("Blocking mode: NXDOMAIN\n");
+            } else {
+                response_len = build_null_ip_response(buffer, response, n);
+                printf("Blocking mode: NULLIP (0.0.0.0)\n");
+            }
 
             if (sendto(sockfd, response, response_len, 0, (struct sockaddr *)&client_addr, addr_len) < 0) {
                 perror("sendto failed\n");
             } else {
-                printf("Sent NXDOMAIN response\n");
+                printf("Sent blocked response\n");
             }
         } else {
             printf("Status: ALLOWED\n");
