@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pi-hole Control Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Pi-hole Control Panel</h1>
+        <p class="subtitle">Demo GUI for managing Pi-hole settings</p>
+
+        <div class="card system-card">
+            <h2>System Status</h2>
+
+            {% if running %}
+                <p class="status running">Pi-hole is Running</p>
+            {% else %}
+                <p class="status stopped">Pi-hole is Stopped</p>
+            {% endif %}
+
+            <div class="stats-row">
+                <p>Blocked Domains: <strong>{{ blocked_count }}</strong></p>
+                <p>Connected Devices: <strong>{{ connected_device_count }}</strong></p>
+            </div>
+
+            <div class="control-buttons">
+                <form action="/turn-on" method="POST">
+                    <button class="success" type="submit" {% if running %}disabled{% endif %}>
+                        Turn On Pi-hole
+                    </button>
+                </form>
+
+                <form action="/turn-off" method="POST">
+                    <button class="danger" type="submit" {% if not running %}disabled{% endif %}>
+                        Turn Off Pi-hole
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Add Domain to Blocklist</h2>
+
+            <form action="/add" method="POST" class="form-row">
+                <input type="text" name="domain" placeholder="example.com">
+                <button type="submit">Add Domain</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Blocked Domains</h2>
+
+            <table>
+                <tr>
+                    <th>Domain</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for domain in blocked_domains %}
+                <tr>
+                    <td>{{ domain }}</td>
+                    <td>
+                        <form action="/remove" method="POST">
+                            <input type="hidden" name="domain" value="{{ domain }}">
+                            <button class="danger small" type="submit">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

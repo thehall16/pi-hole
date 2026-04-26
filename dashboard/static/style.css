@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef1f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 85%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+h1,
+.subtitle {
+    text-align: center;
+}
+
+.subtitle {
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: white;
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.system-card {
+    text-align: center;
+}
+
+.status {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.running {
+    color: green;
+}
+
+.stopped {
+    color: red;
+}
+
+.stats-row {
+    display: flex;
+    justify-content: space-between;
+    max-width: 520px;
+    margin: 18px auto;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.control-buttons form {
+    margin: 0;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    padding: 10px;
+    width: 70%;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 14px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+button.danger {
+    background: #dc2626;
+}
+
+button.success {
+    background: #16a34a;
+}
+
+button.small {
+    padding: 6px 10px;
+}
+
+button:disabled {
+    background: #9ca3af;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #f3f4f6;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
