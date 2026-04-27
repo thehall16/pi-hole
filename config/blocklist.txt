@@ -1,4 +1,5 @@
-google.com
+adclick.g.doubleclick.net
 doubleclick.net
 googleadservices.com
-adclick.g.doubleclick.net
+hello.com
+hello.uk

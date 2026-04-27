@@ -10,6 +10,16 @@
         <h1>Pi-hole Control Panel</h1>
         <p class="subtitle">Demo GUI for managing Pi-hole settings</p>
 
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="card messages">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
         <div class="card system-card">
             <h2>System Status</h2>
 
@@ -19,10 +29,7 @@
                 <p class="status stopped">Pi-hole is Stopped</p>
             {% endif %}
 
-            <div class="stats-row">
-                <p>Blocked Domains: <strong>{{ blocked_count }}</strong></p>
-                <p>Connected Devices: <strong>{{ connected_device_count }}</strong></p>
-            </div>
+            <p>Blocked Domains: <strong>{{ blocked_count }}</strong></p>
 
             <div class="control-buttons">
                 <form action="/turn-on" method="POST">
@@ -49,7 +56,21 @@
         </div>
 
         <div class="card">
-            <h2>Blocked Domains</h2>
+            <div class="blocklist-header">
+                <h2>Blocked Domains</h2>
+
+                <div class="sort-links">
+                    <a href="{{ url_for('index', sort='asc') }}"
+                       class="{% if sort_order == 'asc' %}active-sort{% endif %}">
+                        Sort A-Z
+                    </a>
+                    <span>|</span>
+                    <a href="{{ url_for('index', sort='desc') }}"
+                       class="{% if sort_order == 'desc' %}active-sort{% endif %}">
+                        Sort Z-A
+                    </a>
+                </div>
+            </div>
 
             <table>
                 <tr>
